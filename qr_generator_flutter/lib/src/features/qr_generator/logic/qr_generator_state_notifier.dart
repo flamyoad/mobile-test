@@ -5,9 +5,10 @@ class QrGeneratorStateNotifier extends StateNotifier<QrGeneratorState> {
   ///Create an instace of `State Notifier` with [QrGeneratorState]
   QrGeneratorStateNotifier({
     @required GetSeed getSeed,
+    QrGeneratorState initialState,
   })  : assert(getSeed != null),
         _getSeed = getSeed,
-        super(const QrGeneratorState.initial());
+        super(initialState ?? const QrGeneratorState.initial());
 
   final GetSeed _getSeed;
 
@@ -26,4 +27,7 @@ class QrGeneratorStateNotifier extends StateNotifier<QrGeneratorState> {
   void expireCode() {
     state = const QrGeneratorState.expired();
   }
+
+  ///Testing
+  QrGeneratorState get currentState => state;
 }
