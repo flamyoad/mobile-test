@@ -14,20 +14,20 @@ class _$QrScannerStateTearOff {
   const _$QrScannerStateTearOff();
 
 // ignore: unused_element
-  Initial initial() {
-    return const Initial();
+  _Initial initial() {
+    return const _Initial();
   }
 
 // ignore: unused_element
-  Data data({@required String code}) {
-    return Data(
+  _Data data({@required String code}) {
+    return _Data(
       code: code,
     );
   }
 
 // ignore: unused_element
-  Error error() {
-    return const Error();
+  _Error error() {
+    return const _Error();
   }
 }
 
@@ -52,15 +52,15 @@ mixin _$QrScannerState {
   });
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult initial(Initial value),
-    @required TResult data(Data value),
-    @required TResult error(Error value),
+    @required TResult initial(_Initial value),
+    @required TResult data(_Data value),
+    @required TResult error(_Error value),
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
-    TResult initial(Initial value),
-    TResult data(Data value),
-    TResult error(Error value),
+    TResult initial(_Initial value),
+    TResult data(_Data value),
+    TResult error(_Error value),
     @required TResult orElse(),
   });
 }
@@ -83,24 +83,24 @@ class _$QrScannerStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class $InitialCopyWith<$Res> {
-  factory $InitialCopyWith(Initial value, $Res Function(Initial) then) =
-      _$InitialCopyWithImpl<$Res>;
+abstract class _$InitialCopyWith<$Res> {
+  factory _$InitialCopyWith(_Initial value, $Res Function(_Initial) then) =
+      __$InitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$InitialCopyWithImpl<$Res> extends _$QrScannerStateCopyWithImpl<$Res>
-    implements $InitialCopyWith<$Res> {
-  _$InitialCopyWithImpl(Initial _value, $Res Function(Initial) _then)
-      : super(_value, (v) => _then(v as Initial));
+class __$InitialCopyWithImpl<$Res> extends _$QrScannerStateCopyWithImpl<$Res>
+    implements _$InitialCopyWith<$Res> {
+  __$InitialCopyWithImpl(_Initial _value, $Res Function(_Initial) _then)
+      : super(_value, (v) => _then(v as _Initial));
 
   @override
-  Initial get _value => super._value as Initial;
+  _Initial get _value => super._value as _Initial;
 }
 
 /// @nodoc
-class _$Initial implements Initial {
-  const _$Initial();
+class _$_Initial implements _Initial {
+  const _$_Initial();
 
   @override
   String toString() {
@@ -109,7 +109,7 @@ class _$Initial implements Initial {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is Initial);
+    return identical(this, other) || (other is _Initial);
   }
 
   @override
@@ -146,9 +146,9 @@ class _$Initial implements Initial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult initial(Initial value),
-    @required TResult data(Data value),
-    @required TResult error(Error value),
+    @required TResult initial(_Initial value),
+    @required TResult data(_Data value),
+    @required TResult error(_Error value),
   }) {
     assert(initial != null);
     assert(data != null);
@@ -159,9 +159,9 @@ class _$Initial implements Initial {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
-    TResult initial(Initial value),
-    TResult data(Data value),
-    TResult error(Error value),
+    TResult initial(_Initial value),
+    TResult data(_Data value),
+    TResult error(_Error value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -172,39 +172,39 @@ class _$Initial implements Initial {
   }
 }
 
-abstract class Initial implements QrScannerState {
-  const factory Initial() = _$Initial;
+abstract class _Initial implements QrScannerState {
+  const factory _Initial() = _$_Initial;
 }
 
 /// @nodoc
-abstract class $DataCopyWith<$Res> {
-  factory $DataCopyWith(Data value, $Res Function(Data) then) =
-      _$DataCopyWithImpl<$Res>;
+abstract class _$DataCopyWith<$Res> {
+  factory _$DataCopyWith(_Data value, $Res Function(_Data) then) =
+      __$DataCopyWithImpl<$Res>;
   $Res call({String code});
 }
 
 /// @nodoc
-class _$DataCopyWithImpl<$Res> extends _$QrScannerStateCopyWithImpl<$Res>
-    implements $DataCopyWith<$Res> {
-  _$DataCopyWithImpl(Data _value, $Res Function(Data) _then)
-      : super(_value, (v) => _then(v as Data));
+class __$DataCopyWithImpl<$Res> extends _$QrScannerStateCopyWithImpl<$Res>
+    implements _$DataCopyWith<$Res> {
+  __$DataCopyWithImpl(_Data _value, $Res Function(_Data) _then)
+      : super(_value, (v) => _then(v as _Data));
 
   @override
-  Data get _value => super._value as Data;
+  _Data get _value => super._value as _Data;
 
   @override
   $Res call({
     Object code = freezed,
   }) {
-    return _then(Data(
+    return _then(_Data(
       code: code == freezed ? _value.code : code as String,
     ));
   }
 }
 
 /// @nodoc
-class _$Data implements Data {
-  const _$Data({@required this.code}) : assert(code != null);
+class _$_Data implements _Data {
+  const _$_Data({@required this.code}) : assert(code != null);
 
   @override
   final String code;
@@ -217,7 +217,7 @@ class _$Data implements Data {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is Data &&
+        (other is _Data &&
             (identical(other.code, code) ||
                 const DeepCollectionEquality().equals(other.code, code)));
   }
@@ -228,8 +228,8 @@ class _$Data implements Data {
 
   @JsonKey(ignore: true)
   @override
-  $DataCopyWith<Data> get copyWith =>
-      _$DataCopyWithImpl<Data>(this, _$identity);
+  _$DataCopyWith<_Data> get copyWith =>
+      __$DataCopyWithImpl<_Data>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -262,9 +262,9 @@ class _$Data implements Data {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult initial(Initial value),
-    @required TResult data(Data value),
-    @required TResult error(Error value),
+    @required TResult initial(_Initial value),
+    @required TResult data(_Data value),
+    @required TResult error(_Error value),
   }) {
     assert(initial != null);
     assert(data != null);
@@ -275,9 +275,9 @@ class _$Data implements Data {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
-    TResult initial(Initial value),
-    TResult data(Data value),
-    TResult error(Error value),
+    TResult initial(_Initial value),
+    TResult data(_Data value),
+    TResult error(_Error value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -288,33 +288,33 @@ class _$Data implements Data {
   }
 }
 
-abstract class Data implements QrScannerState {
-  const factory Data({@required String code}) = _$Data;
+abstract class _Data implements QrScannerState {
+  const factory _Data({@required String code}) = _$_Data;
 
   String get code;
   @JsonKey(ignore: true)
-  $DataCopyWith<Data> get copyWith;
+  _$DataCopyWith<_Data> get copyWith;
 }
 
 /// @nodoc
-abstract class $ErrorCopyWith<$Res> {
-  factory $ErrorCopyWith(Error value, $Res Function(Error) then) =
-      _$ErrorCopyWithImpl<$Res>;
+abstract class _$ErrorCopyWith<$Res> {
+  factory _$ErrorCopyWith(_Error value, $Res Function(_Error) then) =
+      __$ErrorCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$ErrorCopyWithImpl<$Res> extends _$QrScannerStateCopyWithImpl<$Res>
-    implements $ErrorCopyWith<$Res> {
-  _$ErrorCopyWithImpl(Error _value, $Res Function(Error) _then)
-      : super(_value, (v) => _then(v as Error));
+class __$ErrorCopyWithImpl<$Res> extends _$QrScannerStateCopyWithImpl<$Res>
+    implements _$ErrorCopyWith<$Res> {
+  __$ErrorCopyWithImpl(_Error _value, $Res Function(_Error) _then)
+      : super(_value, (v) => _then(v as _Error));
 
   @override
-  Error get _value => super._value as Error;
+  _Error get _value => super._value as _Error;
 }
 
 /// @nodoc
-class _$Error implements Error {
-  const _$Error();
+class _$_Error implements _Error {
+  const _$_Error();
 
   @override
   String toString() {
@@ -323,7 +323,7 @@ class _$Error implements Error {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is Error);
+    return identical(this, other) || (other is _Error);
   }
 
   @override
@@ -360,9 +360,9 @@ class _$Error implements Error {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult initial(Initial value),
-    @required TResult data(Data value),
-    @required TResult error(Error value),
+    @required TResult initial(_Initial value),
+    @required TResult data(_Data value),
+    @required TResult error(_Error value),
   }) {
     assert(initial != null);
     assert(data != null);
@@ -373,9 +373,9 @@ class _$Error implements Error {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
-    TResult initial(Initial value),
-    TResult data(Data value),
-    TResult error(Error value),
+    TResult initial(_Initial value),
+    TResult data(_Data value),
+    TResult error(_Error value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -386,6 +386,6 @@ class _$Error implements Error {
   }
 }
 
-abstract class Error implements QrScannerState {
-  const factory Error() = _$Error;
+abstract class _Error implements QrScannerState {
+  const factory _Error() = _$_Error;
 }

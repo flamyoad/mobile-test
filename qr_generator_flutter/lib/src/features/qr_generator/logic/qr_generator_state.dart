@@ -8,17 +8,17 @@ part 'qr_generator_state.freezed.dart';
 @freezed
 abstract class QrGeneratorState with _$QrGeneratorState {
   /// Data is present state
-  const factory QrGeneratorState.data({@required Seed seed}) = Data;
+  const factory QrGeneratorState.data({@required Seed seed}) = _Data;
 
   /// Initial/default state
-  const factory QrGeneratorState.initial() = Initial;
+  const factory QrGeneratorState.initial() = _Initial;
 
   /// Data is loading state
-  const factory QrGeneratorState.loading() = Loading;
+  const factory QrGeneratorState.loading() = _Loading;
 
   /// Error when loading data state
-  const factory QrGeneratorState.expired() = Expired;
+  const factory QrGeneratorState.expired() = _Expired;
 
   /// Error when loading data state
-  const factory QrGeneratorState.error([String message]) = Error;
+  const factory QrGeneratorState.error([String message]) = _Error;
 }

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:qr_generator_flutter/src/app.dart';
-import 'package:qr_generator_flutter/src/core/dependency_injection.dart';
 
 void main() async {
-  await setUpDI();
-  runApp(QrGeneratorApp());
+  runApp(ProviderScope(
+    child: QrGeneratorApp(),
+  ));
 }

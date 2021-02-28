@@ -1,172 +1,171 @@
-import 'package:bloc_test/bloc_test.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/mockito.dart';
+// import 'package:bloc_test/bloc_test.dart';
+// import 'package:flutter/material.dart';
+// import 'package:flutter_bloc/flutter_bloc.dart';
+// import 'package:flutter_test/flutter_test.dart';
+// import 'package:mockito/mockito.dart';
 
-import 'package:qr_generator/qr_generator.dart';
-import 'package:qr_generator_flutter/src/features/qr_generator/logic/qr_generator_cubit.dart';
-import 'package:qr_generator_flutter/src/features/qr_generator/logic/qr_generator_state.dart';
-import 'package:qr_generator_flutter/src/features/qr_generator/views/qr_generator_page.dart';
-import 'package:qr_generator_flutter/src/features/qr_generator/views/qr_generator_page_i18n.dart';
-import 'package:qr_generator_flutter/src/features/qr_scanner/logic/qr_scanner_cubit.dart';
-import 'package:qr_generator_flutter/src/features/qr_scanner/logic/qr_scanner_state.dart'
-    as scanner_s;
-import 'package:qr_generator_flutter/src/features/qr_scanner/views/qr_scanner_page.dart';
-import 'package:qr_generator_flutter/src/features/qr_generator/views/widgets/qr_code_widget.dart';
+// import 'package:qr_generator/qr_generator.dart';
+// import 'package:qr_generator_flutter/src/features/qr_generator/logic/qr_generator_state.dart';
+// import 'package:qr_generator_flutter/src/features/qr_generator/views/qr_generator_page.dart';
+// import 'package:qr_generator_flutter/src/features/qr_generator/views/qr_generator_page_i18n.dart';
 
-class MockGetSeed extends Mock implements GetSeed {}
+// import 'package:qr_generator_flutter/src/features/qr_scanner/logic/qr_scanner_state.dart'
+//     as scanner_s;
+// import 'package:qr_generator_flutter/src/features/qr_scanner/views/qr_scanner_page.dart';
+// import 'package:qr_generator_flutter/src/features/qr_generator/views/widgets/qr_code_widget.dart';
 
-class MockQrGeneratorCubit extends MockBloc<QrGeneratorState>
-    implements QrGeneratorCubit {}
+// class MockGetSeed extends Mock implements GetSeed {}
 
-class MockQrScannerCubit extends MockBloc<scanner_s.QrScannerState>
-    implements QrScannerCubit {}
+// class MockQrGeneratorCubit extends MockBloc<QrGeneratorState>
+//     implements QrGeneratorCubit {}
 
-void main() {
-  group('QrGeneratorPage', () {
-    final tSeed = Seed(
-      seed: 'seed',
-      expiresAt: DateTime.now().add(const Duration(seconds: 15)),
-    );
+// class MockQrScannerCubit extends MockBloc<scanner_s.QrScannerState>
+//     implements QrScannerCubit {}
 
-    QrGeneratorCubit qrGeneratorCubit;
-    QrScannerCubit qrScannerCubit;
+// void main() {
+//   group('QrGeneratorPage', () {
+//     final tSeed = Seed(
+//       seed: 'seed',
+//       expiresAt: DateTime.now().add(const Duration(seconds: 15)),
+//     );
 
-    setUp(() {
-      qrGeneratorCubit = MockQrGeneratorCubit();
-      qrScannerCubit = MockQrScannerCubit();
-    });
+//     QrGeneratorCubit qrGeneratorCubit;
+//     QrScannerCubit qrScannerCubit;
 
-    test('has a route', () {
-      expect(QrGeneratorPage.route(), isA<MaterialPageRoute>());
-    });
+//     setUp(() {
+//       qrGeneratorCubit = MockQrGeneratorCubit();
+//       qrScannerCubit = MockQrScannerCubit();
+//     });
 
-    testWidgets('renders a QrGeneratorPage', (tester) async {
-      ///arrange
-      when(qrGeneratorCubit.state).thenReturn(const Initial());
+//     test('has a route', () {
+//       expect(QrGeneratorPage.route(), isA<MaterialPageRoute>());
+//     });
 
-      ///act
-      await tester.pumpWidget(BlocProvider.value(
-        value: qrGeneratorCubit,
-        child: const MaterialApp(home: QrGeneratorPage()),
-      ));
+//     testWidgets('renders a QrGeneratorPage', (tester) async {
+//       ///arrange
+//       when(qrGeneratorCubit.state).thenReturn(const Initial());
 
-      ///expect
-      expect(find.byKey(const Key('kBodyKey')), findsOneWidget);
-    });
+//       ///act
+//       await tester.pumpWidget(BlocProvider.value(
+//         value: qrGeneratorCubit,
+//         child: const MaterialApp(home: QrGeneratorPage()),
+//       ));
 
-    testWidgets('renders Initial Text for Initial', (tester) async {
-      ///Arrange
-      when(qrGeneratorCubit.state).thenReturn(const Initial());
+//       ///expect
+//       expect(find.byKey(const Key('kBodyKey')), findsOneWidget);
+//     });
 
-      ///act
-      await tester.pumpWidget(BlocProvider.value(
-        value: qrGeneratorCubit,
-        child: const MaterialApp(home: QrGeneratorPage()),
-      ));
+//     testWidgets('renders Initial Text for Initial', (tester) async {
+//       ///Arrange
+//       when(qrGeneratorCubit.state).thenReturn(const Initial());
 
-      ///expect
-      expect(find.text(kWelcomeText.i18n), findsOneWidget);
-    });
+//       ///act
+//       await tester.pumpWidget(BlocProvider.value(
+//         value: qrGeneratorCubit,
+//         child: const MaterialApp(home: QrGeneratorPage()),
+//       ));
 
-    testWidgets('renders CircularProgress for Loading', (tester) async {
-      ///Arrange
-      when(qrGeneratorCubit.state).thenReturn(const Loading());
+//       ///expect
+//       expect(find.text(kWelcomeText.i18n), findsOneWidget);
+//     });
 
-      ///Act
-      await tester.pumpWidget(BlocProvider.value(
-        value: qrGeneratorCubit,
-        child: const MaterialApp(home: QrGeneratorPage()),
-      ));
+//     testWidgets('renders CircularProgress for Loading', (tester) async {
+//       ///Arrange
+//       when(qrGeneratorCubit.state).thenReturn(const Loading());
 
-      ///Expect
-      expect(find.byType(CircularProgressIndicator), findsOneWidget);
-    });
+//       ///Act
+//       await tester.pumpWidget(BlocProvider.value(
+//         value: qrGeneratorCubit,
+//         child: const MaterialApp(home: QrGeneratorPage()),
+//       ));
 
-    testWidgets('renders QrWidget for Data', (tester) async {
-      ///Arrange
-      when(qrGeneratorCubit.state).thenReturn(Data(seed: tSeed));
+//       ///Expect
+//       expect(find.byType(CircularProgressIndicator), findsOneWidget);
+//     });
 
-      ///Act
-      await tester.pumpWidget(BlocProvider.value(
-        value: qrGeneratorCubit,
-        child: const MaterialApp(home: QrGeneratorPage()),
-      ));
+//     testWidgets('renders QrWidget for Data', (tester) async {
+//       ///Arrange
+//       when(qrGeneratorCubit.state).thenReturn(Data(seed: tSeed));
 
-      ///Expect
-      expect(find.byType(QrCodeWidget), findsOneWidget);
-    });
+//       ///Act
+//       await tester.pumpWidget(BlocProvider.value(
+//         value: qrGeneratorCubit,
+//         child: const MaterialApp(home: QrGeneratorPage()),
+//       ));
 
-    testWidgets('renders Error Text for Error', (tester) async {
-      ///Arrange
-      when(qrGeneratorCubit.state).thenReturn(const Error());
+//       ///Expect
+//       expect(find.byType(QrCodeWidget), findsOneWidget);
+//     });
 
-      ///Act
-      await tester.pumpWidget(BlocProvider.value(
-        value: qrGeneratorCubit,
-        child: const MaterialApp(home: QrGeneratorPage()),
-      ));
+//     testWidgets('renders Error Text for Error', (tester) async {
+//       ///Arrange
+//       when(qrGeneratorCubit.state).thenReturn(const Error());
 
-      ///Expect
-      expect(find.text(kError.i18n), findsOneWidget);
-    });
+//       ///Act
+//       await tester.pumpWidget(BlocProvider.value(
+//         value: qrGeneratorCubit,
+//         child: const MaterialApp(home: QrGeneratorPage()),
+//       ));
 
-    testWidgets('renders Expired Text for Expired', (tester) async {
-      ///Arrange
-      when(qrGeneratorCubit.state).thenReturn(const Expired());
+//       ///Expect
+//       expect(find.text(kError.i18n), findsOneWidget);
+//     });
 
-      ///Act
-      await tester.pumpWidget(BlocProvider.value(
-        value: qrGeneratorCubit,
-        child: const MaterialApp(home: QrGeneratorPage()),
-      ));
+//     testWidgets('renders Expired Text for Expired', (tester) async {
+//       ///Arrange
+//       when(qrGeneratorCubit.state).thenReturn(const Expired());
 
-      ///Expect
-      expect(find.text(kCodeExpired.i18n), findsOneWidget);
-    });
+//       ///Act
+//       await tester.pumpWidget(BlocProvider.value(
+//         value: qrGeneratorCubit,
+//         child: const MaterialApp(home: QrGeneratorPage()),
+//       ));
 
-    testWidgets('navigates to QrScanPage when scan icon is tapped',
-        (tester) async {
-      ///Arrange
-      when(qrGeneratorCubit.state).thenReturn(const Initial());
-      when(qrScannerCubit.state).thenReturn(const scanner_s.Initial());
+//       ///Expect
+//       expect(find.text(kCodeExpired.i18n), findsOneWidget);
+//     });
 
-      ///Act
-      await tester.pumpWidget(MultiBlocProvider(
-        providers: [
-          BlocProvider.value(value: qrGeneratorCubit),
-          BlocProvider.value(value: qrScannerCubit),
-        ],
-        child: const MaterialApp(home: QrGeneratorPage()),
-      ));
-      await tester.tap(find.byKey(const Key('kPrimaryFloatingButton')));
-      await tester.pumpAndSettle();
-      await tester.tap(find.byKey(const Key('kScanQrButton')));
-      await tester.pumpAndSettle();
+//     testWidgets('navigates to QrScanPage when scan icon is tapped',
+//         (tester) async {
+//       ///Arrange
+//       when(qrGeneratorCubit.state).thenReturn(const Initial());
+//       when(qrScannerCubit.state).thenReturn(const scanner_s.Initial());
 
-      ///Expect
-      expect(find.byType(QrScannerPage), findsOneWidget);
-    });
+//       ///Act
+//       await tester.pumpWidget(MultiBlocProvider(
+//         providers: [
+//           BlocProvider.value(value: qrGeneratorCubit),
+//           BlocProvider.value(value: qrScannerCubit),
+//         ],
+//         child: const MaterialApp(home: QrGeneratorPage()),
+//       ));
+//       await tester.tap(find.byKey(const Key('kPrimaryFloatingButton')));
+//       await tester.pumpAndSettle();
+//       await tester.tap(find.byKey(const Key('kScanQrButton')));
+//       await tester.pumpAndSettle();
 
-    testWidgets('triggers getSeed when generate qr button is pressed',
-        (tester) async {
-      ///Arrange
-      when(qrGeneratorCubit.state).thenReturn(const Initial());
-      when(qrGeneratorCubit.getSeed()).thenAnswer((_) async {});
+//       ///Expect
+//       expect(find.byType(QrScannerPage), findsOneWidget);
+//     });
 
-      ///Act
-      await tester.pumpWidget(BlocProvider.value(
-        value: qrGeneratorCubit,
-        child: const MaterialApp(home: QrGeneratorPage()),
-      ));
+//     testWidgets('triggers getSeed when generate qr button is pressed',
+//         (tester) async {
+//       ///Arrange
+//       when(qrGeneratorCubit.state).thenReturn(const Initial());
+//       when(qrGeneratorCubit.getSeed()).thenAnswer((_) async {});
 
-      await tester.tap(find.byKey(const Key('kPrimaryFloatingButton')));
-      await tester.pumpAndSettle();
-      await tester.tap(find.byKey(const Key('kGenerateQrButton')));
-      await tester.pumpAndSettle();
+//       ///Act
+//       await tester.pumpWidget(BlocProvider.value(
+//         value: qrGeneratorCubit,
+//         child: const MaterialApp(home: QrGeneratorPage()),
+//       ));
 
-      verify(qrGeneratorCubit.getSeed()).called(1);
-    });
-  });
-}
+//       await tester.tap(find.byKey(const Key('kPrimaryFloatingButton')));
+//       await tester.pumpAndSettle();
+//       await tester.tap(find.byKey(const Key('kGenerateQrButton')));
+//       await tester.pumpAndSettle();
+
+//       verify(qrGeneratorCubit.getSeed()).called(1);
+//     });
+//   });
+// }

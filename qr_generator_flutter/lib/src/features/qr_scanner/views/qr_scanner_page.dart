@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:qr_generator_flutter/src/core/styles/app_colors.dart';
 import 'package:qr_generator_flutter/src/core/styles/app_text_styles.dart';
-import 'package:qr_generator_flutter/src/features/qr_scanner/logic/qr_scanner_cubit.dart';
-import 'package:qr_generator_flutter/src/features/qr_scanner/logic/qr_scanner_state.dart';
+
 import 'package:qr_generator_flutter/src/features/qr_scanner/views/qr_scanner_page_i18n.dart';
+
+import '../logic/qr_scanner_provider.dart';
 
 ///Key for testing
 final kScannerBody = UniqueKey();
@@ -67,7 +68,7 @@ class _DefaultData extends StatelessWidget {
           key: kQrScanButton,
           color: AppColors.pink,
           onPressed: () {
-            context.read<QrScannerCubit>().scanQr();
+            context.read(qrScannerStateNotifierProvider).scanQr();
           },
           child: Text(
             kStartScan.i18n,
@@ -85,18 +86,15 @@ class _DefaultData extends StatelessWidget {
   }
 }
 
-class _ScannedCodeBuilder extends StatelessWidget {
+class _ScannedCodeBuilder extends ConsumerWidget {
   const _ScannedCodeBuilder();
   @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<QrScannerCubit, QrScannerState>(
-      builder: (context, state) {
-        return state.when(
-          initial: () => const _ScannedCode(code: kNoCodeScanned),
-          data: (code) => _ScannedCode(code: code),
-          error: () => const _ScannedCode(code: kNoCodeScanned),
-        );
-      },
+  Widget build(BuildContext context, ScopedReader watch) {
+    final state = watch(qrScannerStateNotifierProvider.state);
+    return state.when(
+      initial: () => const _ScannedCode(code: kNoCodeScanned),
+      data: (code) => _ScannedCode(code: code),
+      error: () => const _ScannedCode(code: kNoCodeScanned),
     );
   }
 }
