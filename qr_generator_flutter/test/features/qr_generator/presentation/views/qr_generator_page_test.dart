@@ -183,7 +183,7 @@ void main() {
     testWidgets('triggers getSeed when generate qr button is pressed',
         (tester) async {
       ///Arrange
-      when(mockGetSeed()).thenAnswer((_) async => {});
+      when(mockGetSeed()).thenAnswer((_) async => Right(tSeed));
 
       ///Act
       await tester.pumpWidget(
