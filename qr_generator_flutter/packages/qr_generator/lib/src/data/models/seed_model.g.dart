@@ -8,14 +8,14 @@ part of 'seed_model.dart';
 
 SeedModel _$SeedModelFromJson(Map<String, dynamic> json) {
   return SeedModel(
-    seed: json['seed'] as String,
-    expiresAt: json['expires_at'] == null
+    seed: json['seed'] as String?,
+    expiresAt: json['expiresAt'] == null
         ? null
-        : DateTime.parse(json['expires_at'] as String),
+        : DateTime.parse(json['expiresAt'] as String),
   );
 }
 
 Map<String, dynamic> _$SeedModelToJson(SeedModel instance) => <String, dynamic>{
       'seed': instance.seed,
-      'expires_at': instance.expiresAt?.toIso8601String(),
+      'expiresAt': instance.expiresAt?.toIso8601String(),
     };

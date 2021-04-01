@@ -1,4 +1,3 @@
-import 'package:meta/meta.dart';
 import 'package:dio/dio.dart';
 import 'package:errors/errors.dart';
 import 'package:qr_generator/src/data/models/seed_model.dart';
@@ -15,11 +14,9 @@ abstract class IRemoteDataSource {
 class RemoteDataSource implements IRemoteDataSource {
   ///RemoteDataSource Constructor
   RemoteDataSource({
-    @required Dio client,
-    @required String url,
-  })  : assert(client != null),
-        assert(url != null),
-        _client = client,
+    required Dio client,
+    required String url,
+  })   : _client = client,
         _url = url;
 
   final Dio _client;

@@ -1,3 +1,4 @@
+import 'package:mockito/annotations.dart';
 import 'package:test/test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:dartz/dartz.dart';
@@ -6,15 +7,15 @@ import 'package:errors/errors.dart';
 
 import 'package:qr_generator/qr_generator.dart';
 
-class MockQrGeneratorRepository extends Mock implements IQrGeneratorRepository {
-}
+import 'get_seed_test.mocks.dart';
 
+@GenerateMocks([QrGeneratorRepository])
 void main() {
-  GetSeed usecase;
-  MockQrGeneratorRepository mockQrGeneratorRepository;
+  final mockQrGeneratorRepository = MockQrGeneratorRepository();
+  ;
+  late GetSeed usecase;
 
   setUp(() {
-    mockQrGeneratorRepository = MockQrGeneratorRepository();
     usecase = GetSeed(repository: mockQrGeneratorRepository);
   });
 
@@ -30,7 +31,7 @@ void main() {
           .thenAnswer((_) async => Right(tSeedEntity));
 
       // act
-      final result = await usecase();
+      final Either<Failure, Seed>? result = await usecase();
 
       // assert
       expect(result, Right(tSeedEntity));
@@ -47,7 +48,7 @@ void main() {
           .thenAnswer((_) async => Left(ServerFailure()));
 
       // act
-      final result = await usecase();
+      final Either<Failure, Seed>? result = await usecase();
 
       // assert
       expect(result, equals(Left(ServerFailure())));

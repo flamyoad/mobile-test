@@ -1,13 +1,12 @@
 import 'package:dartz/dartz.dart';
 import 'package:errors/errors.dart';
-import 'package:meta/meta.dart';
 
 import '../domain.dart';
 
 /// Get Seed Use Case
 class GetSeed {
   ///Get seed Use Case
-  GetSeed({@required this.repository}) : assert(repository != null);
+  GetSeed({required this.repository});
 
   /// Repository instance
   final IQrGeneratorRepository repository;

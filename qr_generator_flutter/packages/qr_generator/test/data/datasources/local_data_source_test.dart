@@ -1,19 +1,16 @@
+import 'package:mockito/annotations.dart';
 import 'package:test/test.dart';
 import 'package:matcher/matcher.dart';
 import 'package:mockito/mockito.dart';
 
 import 'package:errors/errors.dart';
-
 import 'package:qr_generator/qr_generator.dart';
 
-class MockLocalDataSource extends Mock implements ILocalDataSource {}
+import 'local_data_source_test.mocks.dart';
 
+@GenerateMocks([ILocalDataSource])
 void main() {
-  MockLocalDataSource dataSource;
-
-  setUp(() {
-    dataSource = MockLocalDataSource();
-  });
+  final dataSource = MockILocalDataSource();
 
   group('get locally generated Seed', () {
     final tSeed = SeedModel(
@@ -26,10 +23,11 @@ void main() {
       () async {
         // arrange
         when(dataSource.getLocalGeneratedSeed()).thenAnswer(
-          (_) => Future.value(tSeed),
+          (_) async => tSeed,
         );
         // act
         final result = await dataSource.getLocalGeneratedSeed();
+
         // assert
         verify(dataSource.getLocalGeneratedSeed());
         expect(result, equals(tSeed));

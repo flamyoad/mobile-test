@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:mockito/annotations.dart';
 import 'package:test/test.dart';
 import 'package:matcher/matcher.dart';
 import 'package:mockito/mockito.dart';
@@ -9,32 +10,39 @@ import 'package:errors/errors.dart';
 import 'package:qr_generator/qr_generator.dart';
 
 import '../../fixtures/fixture_reader.dart';
+import 'remote_data_source_test.mocks.dart';
 
-class MockDioClient extends Mock implements Dio {}
-
+@GenerateMocks([Dio])
 void main() {
-  RemoteDataSource dataSource;
-  MockDioClient mockDioClient;
+  final mockDioClient = MockDio();
+  late RemoteDataSource dataSource;
 
   setUp(() {
-    mockDioClient = MockDioClient();
     dataSource = RemoteDataSource(client: mockDioClient, url: '');
   });
 
   void setUpMockDioClientSuccess200() {
     when(
-      mockDioClient.get(any),
+      mockDioClient.get(''),
     ).thenAnswer(
       (_) async => Response(
-          data: json.decode(fixture('seed_local.json')), statusCode: 200),
+        requestOptions: RequestOptions(path: ''),
+        data: json.decode(fixture('seed_local.json')),
+        statusCode: 200,
+      ),
     );
   }
 
   void setUpMockDioClientFailure404() {
     when(
-      mockDioClient.get(any),
+      mockDioClient.get(''),
     ).thenAnswer(
-        (_) async => Response(data: 'Something went wrong', statusCode: 400));
+      (_) async => Response(
+        requestOptions: RequestOptions(path: ''),
+        data: 'Something went wrong',
+        statusCode: 400,
+      ),
+    );
   }
 
   group('getSeed', () {

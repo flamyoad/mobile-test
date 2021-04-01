@@ -43,7 +43,7 @@ void main() {
         // assert
         final expectedMap = {
           'seed': tSeedModel.seed,
-          'expires_at': tSeedModel.expiresAt.toIso8601String(),
+          'expiresAt': tSeedModel.expiresAt!.toIso8601String(),
         };
         expect(result, expectedMap);
       },
