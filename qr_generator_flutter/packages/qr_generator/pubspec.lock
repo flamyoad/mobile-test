@@ -162,6 +162,15 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.10.0-nullsafety.1"
+  data_connection_checker:
+    dependency: transitive
+    description:
+      path: "."
+      ref: HEAD
+      resolved-ref: "1b983aa377d9984ab18292d5ff33768e284e93d6"
+      url: "git://github.com/uSlashVlad/data_connection_checker.git"
+    source: git
+    version: "0.4.0-nullsafety"
   dio:
     dependency: "direct main"
     description:
@@ -297,13 +306,22 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.0"
-  mockito:
+  mocktail:
     dependency: "direct dev"
     description:
-      name: mockito
+      name: mocktail
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "5.0.3"
+    version: "0.1.1"
+  network_manager:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: HEAD
+      resolved-ref: e7dce05abfdd6e03e79eb4cb34a5d400faa7f153
+      url: "git://github.com/NoScopeDevs/network_manager"
+    source: git
+    version: "2.0.0"
   node_preamble:
     dependency: transitive
     description:
