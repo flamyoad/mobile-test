@@ -1,16 +1,14 @@
-import 'package:mockito/annotations.dart';
+import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 import 'package:matcher/matcher.dart';
-import 'package:mockito/mockito.dart';
 
 import 'package:errors/errors.dart';
 import 'package:qr_generator/qr_generator.dart';
 
-import 'local_data_source_test.mocks.dart';
+class MockLocalDataSource extends Mock implements ILocalDataSource {}
 
-@GenerateMocks([ILocalDataSource])
 void main() {
-  final dataSource = MockILocalDataSource();
+  final dataSource = MockLocalDataSource();
 
   group('get locally generated Seed', () {
     final tSeed = SeedModel(
@@ -22,14 +20,14 @@ void main() {
       'should return locally generated Seed when ther is no internet',
       () async {
         // arrange
-        when(dataSource.getLocalGeneratedSeed()).thenAnswer(
+        when(() => dataSource.getLocalGeneratedSeed()).thenAnswer(
           (_) async => tSeed,
         );
         // act
         final result = await dataSource.getLocalGeneratedSeed();
 
         // assert
-        verify(dataSource.getLocalGeneratedSeed());
+        verify(() => dataSource.getLocalGeneratedSeed());
         expect(result, equals(tSeed));
       },
     );
@@ -38,7 +36,7 @@ void main() {
       'should throw a CacheExeption if seed is null',
       () async {
         // arrange
-        when(dataSource.getLocalGeneratedSeed()).thenThrow(
+        when(() => dataSource.getLocalGeneratedSeed()).thenThrow(
           CacheException(),
         );
         // act

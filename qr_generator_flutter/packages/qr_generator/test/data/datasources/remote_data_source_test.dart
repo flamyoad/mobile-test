@@ -1,8 +1,7 @@
 import 'dart:convert';
-import 'package:mockito/annotations.dart';
+import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 import 'package:matcher/matcher.dart';
-import 'package:mockito/mockito.dart';
 import 'package:dio/dio.dart';
 
 import 'package:errors/errors.dart';
@@ -10,9 +9,9 @@ import 'package:errors/errors.dart';
 import 'package:qr_generator/qr_generator.dart';
 
 import '../../fixtures/fixture_reader.dart';
-import 'remote_data_source_test.mocks.dart';
 
-@GenerateMocks([Dio])
+class MockDio extends Mock implements Dio {}
+
 void main() {
   final mockDioClient = MockDio();
   late RemoteDataSource dataSource;
@@ -23,7 +22,7 @@ void main() {
 
   void setUpMockDioClientSuccess200() {
     when(
-      mockDioClient.get(''),
+      () => mockDioClient.get(''),
     ).thenAnswer(
       (_) async => Response(
         requestOptions: RequestOptions(path: ''),
@@ -35,7 +34,7 @@ void main() {
 
   void setUpMockDioClientFailure404() {
     when(
-      mockDioClient.get(''),
+      () => mockDioClient.get(''),
     ).thenAnswer(
       (_) async => Response(
         requestOptions: RequestOptions(path: ''),
@@ -58,7 +57,7 @@ void main() {
         await dataSource.getSeed();
 
         // assert
-        verify(mockDioClient.get(any));
+        verify(() => mockDioClient.get(''));
       },
     );
 
