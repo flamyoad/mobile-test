@@ -2,7 +2,7 @@ import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 
 import 'package:qr_generator/qr_generator.dart';
 import 'package:qr_generator_flutter/src/features/qr_generator/logic/qr_generator_cubit.dart';
@@ -17,21 +17,29 @@ import 'package:qr_generator_flutter/src/features/qr_generator/views/widgets/qr_
 
 class MockGetSeed extends Mock implements GetSeed {}
 
-class MockQrGeneratorCubit extends MockBloc<QrGeneratorState>
+class MockQrGeneratorCubit extends MockCubit<QrGeneratorState>
     implements QrGeneratorCubit {}
 
-class MockQrScannerCubit extends MockBloc<scanner_s.QrScannerState>
+class MockQrScannerCubit extends MockCubit<scanner_s.QrScannerState>
     implements QrScannerCubit {}
 
+class FakeQrGeneratorState extends Fake implements QrGeneratorState {}
+
+class FakeQrScannerState extends Fake implements scanner_s.QrScannerState {}
+
 void main() {
+  setUpAll(() {
+    registerFallbackValue<QrGeneratorState>(FakeQrGeneratorState());
+    registerFallbackValue<scanner_s.QrScannerState>(FakeQrScannerState());
+  });
   group('QrGeneratorPage', () {
     final tSeed = Seed(
       seed: 'seed',
       expiresAt: DateTime.now().add(const Duration(seconds: 15)),
     );
 
-    QrGeneratorCubit qrGeneratorCubit;
-    QrScannerCubit qrScannerCubit;
+    late QrGeneratorCubit qrGeneratorCubit;
+    late QrScannerCubit qrScannerCubit;
 
     setUp(() {
       qrGeneratorCubit = MockQrGeneratorCubit();
@@ -44,7 +52,8 @@ void main() {
 
     testWidgets('renders a QrGeneratorPage', (tester) async {
       ///arrange
-      when(qrGeneratorCubit.state).thenReturn(const Initial());
+      when(() => qrGeneratorCubit.state)
+          .thenReturn(const QrGeneratorState.initial());
 
       ///act
       await tester.pumpWidget(BlocProvider.value(
@@ -58,7 +67,8 @@ void main() {
 
     testWidgets('renders Initial Text for Initial', (tester) async {
       ///Arrange
-      when(qrGeneratorCubit.state).thenReturn(const Initial());
+      when(() => qrGeneratorCubit.state)
+          .thenReturn(const QrGeneratorState.initial());
 
       ///act
       await tester.pumpWidget(BlocProvider.value(
@@ -72,7 +82,8 @@ void main() {
 
     testWidgets('renders CircularProgress for Loading', (tester) async {
       ///Arrange
-      when(qrGeneratorCubit.state).thenReturn(const Loading());
+      when(() => qrGeneratorCubit.state)
+          .thenReturn(const QrGeneratorState.loading());
 
       ///Act
       await tester.pumpWidget(BlocProvider.value(
@@ -86,7 +97,8 @@ void main() {
 
     testWidgets('renders QrWidget for Data', (tester) async {
       ///Arrange
-      when(qrGeneratorCubit.state).thenReturn(Data(seed: tSeed));
+      when(() => qrGeneratorCubit.state)
+          .thenReturn(QrGeneratorState.data(seed: tSeed));
 
       ///Act
       await tester.pumpWidget(BlocProvider.value(
@@ -100,7 +112,8 @@ void main() {
 
     testWidgets('renders Error Text for Error', (tester) async {
       ///Arrange
-      when(qrGeneratorCubit.state).thenReturn(const Error());
+      when(() => qrGeneratorCubit.state)
+          .thenReturn(const QrGeneratorState.error());
 
       ///Act
       await tester.pumpWidget(BlocProvider.value(
@@ -114,7 +127,8 @@ void main() {
 
     testWidgets('renders Expired Text for Expired', (tester) async {
       ///Arrange
-      when(qrGeneratorCubit.state).thenReturn(const Expired());
+      when(() => qrGeneratorCubit.state)
+          .thenReturn(const QrGeneratorState.expired());
 
       ///Act
       await tester.pumpWidget(BlocProvider.value(
@@ -129,8 +143,10 @@ void main() {
     testWidgets('navigates to QrScanPage when scan icon is tapped',
         (tester) async {
       ///Arrange
-      when(qrGeneratorCubit.state).thenReturn(const Initial());
-      when(qrScannerCubit.state).thenReturn(const scanner_s.Initial());
+      when(() => qrGeneratorCubit.state)
+          .thenReturn(const QrGeneratorState.initial());
+      when(() => qrScannerCubit.state)
+          .thenReturn(const scanner_s.QrScannerState.initial());
 
       ///Act
       await tester.pumpWidget(MultiBlocProvider(
@@ -152,8 +168,9 @@ void main() {
     testWidgets('triggers getSeed when generate qr button is pressed',
         (tester) async {
       ///Arrange
-      when(qrGeneratorCubit.state).thenReturn(const Initial());
-      when(qrGeneratorCubit.getSeed()).thenAnswer((_) async {});
+      when(() => qrGeneratorCubit.state)
+          .thenReturn(const QrGeneratorState.initial());
+      when(() => qrGeneratorCubit.getSeed()).thenAnswer((_) async {});
 
       ///Act
       await tester.pumpWidget(BlocProvider.value(
@@ -166,7 +183,7 @@ void main() {
       await tester.tap(find.byKey(const Key('kGenerateQrButton')));
       await tester.pumpAndSettle();
 
-      verify(qrGeneratorCubit.getSeed()).called(1);
+      verify(() => qrGeneratorCubit.getSeed()).called(1);
     });
   });
 }

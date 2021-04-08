@@ -2,7 +2,7 @@ import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 
 import 'package:qr_generator/qr_generator.dart';
 import 'package:qr_generator_flutter/src/features/qr_scanner/logic/qr_scanner_cubit.dart';
@@ -12,12 +12,18 @@ import 'package:qr_generator_flutter/src/features/qr_scanner/views/qr_scanner_pa
 
 class MockGetSeed extends Mock implements GetSeed {}
 
-class MockQrScannerCubit extends MockBloc<QrScannerState>
+class MockQrScannerCubit extends MockCubit<QrScannerState>
     implements QrScannerCubit {}
 
+class MockQrScannerState extends Mock implements QrScannerState {}
+
 void main() {
+  setUpAll(() {
+    registerFallbackValue<QrScannerState>(MockQrScannerState());
+  });
+
   group('QrScannerPage', () {
-    QrScannerCubit qrScannerCubit;
+    late QrScannerCubit qrScannerCubit;
     setUp(() {
       qrScannerCubit = MockQrScannerCubit();
     });
@@ -28,7 +34,8 @@ void main() {
 
     testWidgets('renders a QrScannerPage', (tester) async {
       ///arrange
-      when(qrScannerCubit.state).thenReturn(const Initial());
+      when(() => qrScannerCubit.state)
+          .thenReturn(const QrScannerState.initial());
 
       ///act
       await tester.pumpWidget(BlocProvider.value(
@@ -42,7 +49,8 @@ void main() {
 
     testWidgets('renders a Start Qr Scan button', (tester) async {
       ///arrange
-      when(qrScannerCubit.state).thenReturn(const Initial());
+      when(() => qrScannerCubit.state)
+          .thenReturn(const QrScannerState.initial());
 
       ///act
       await tester.pumpWidget(BlocProvider.value(
@@ -55,7 +63,8 @@ void main() {
     });
     testWidgets('renders Initial Text for Initial', (tester) async {
       ///Arrange
-      when(qrScannerCubit.state).thenReturn(const Initial());
+      when(() => qrScannerCubit.state)
+          .thenReturn(const QrScannerState.initial());
 
       ///act
       await tester.pumpWidget(BlocProvider.value(
@@ -69,7 +78,7 @@ void main() {
 
     testWidgets('renders No Scanned Text for Error', (tester) async {
       ///Arrange
-      when(qrScannerCubit.state).thenReturn(const Error());
+      when(() => qrScannerCubit.state).thenReturn(const QrScannerState.error());
 
       ///Act
       await tester.pumpWidget(BlocProvider.value(
@@ -85,7 +94,8 @@ void main() {
       const code = 'NewCode';
 
       ///Arrange
-      when(qrScannerCubit.state).thenReturn(const Data(code: code));
+      when(() => qrScannerCubit.state)
+          .thenReturn(const QrScannerState.data(code: code));
 
       ///Act
       await tester.pumpWidget(BlocProvider.value(
