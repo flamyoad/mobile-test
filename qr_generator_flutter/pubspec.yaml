@@ -6,60 +6,36 @@ publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.9.0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-
   flutter_localizations:
     sdk: flutter
-    
-  flutter_barcode_scanner: ^1.0.2
-  i18n_extension: ^2.0.0  
-  # * State Management
-  flutter_bloc: ^6.1.2
-  freezed_annotation: ^0.12.0
-  flutter_hooks: ^0.15.0
-
-  # * Dependency Injection
-  get_it: ^5.0.6
-
-  cupertino_icons: ^1.0.0
-  
-  # * static analysis
-  very_good_analysis:
-
-  dio: ^3.0.10
-
-  # * Local
   qr_generator:
     path: packages/qr_generator
-
-
-  # * Qr Flutter
-  qr_flutter: 
-    git:
-      url: git://github.com/theyakka/qr.flutter
-
-  # * Scoped Packages
-  errors:
-    git:
-      url: git://github.com/NoScopeDevs/errors
-  network_manager:
-    git:
-      url: git://github.com/NoScopeDevs/network_manager
+  cupertino_icons: ^1.0.2
+  dio: ^4.0.0
+  flutter_barcode_scanner: ^2.0.0-nullsafety.0
+  flutter_bloc: ^7.0.0
+  flutter_hooks: ^0.16.0
+  freezed_annotation: ^0.14.1
+  get_it: ^6.0.0
+  i18n_extension: ^4.0.2
+  qr_flutter: ^4.0.0
+  very_good_analysis: ^2.0.0
 
 dev_dependencies:
-  flutter_driver:
-    sdk: flutter
-  test: any
+  # flutter_driver:
+  #   sdk: flutter
   flutter_test:
     sdk: flutter
-  freezed: null
+  bloc_test: ^8.0.0
   build_runner: null
-  mockito: ^4.1.4
-  bloc_test: ^7.1.0
+  freezed: ^0.14.1+2
+  mocktail: ^0.1.1
+  # test: ^1.16.8
 
 flutter:
   uses-material-design: true
@@ -68,6 +44,6 @@ flutter:
     - assets/images/
 
   fonts:
-  - family: digital7
-    fonts:
-      - asset: fonts/digital-7.ttf
+    - family: digital7
+      fonts:
+        - asset: fonts/digital-7.ttf

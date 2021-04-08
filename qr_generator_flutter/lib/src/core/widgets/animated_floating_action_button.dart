@@ -6,7 +6,7 @@ import 'package:qr_generator_flutter/src/core/styles/app_colors.dart';
 class AnimatedFloatingActionButton extends HookWidget {
   ///Circular button that recieve list of `butttons` to animate
   AnimatedFloatingActionButton({
-    @required this.buttons,
+    required this.buttons,
   }) : assert(
           buttons.isNotEmpty || buttons.length > 3,
           'There should be 3 buttons maximum',
@@ -109,10 +109,10 @@ class AnimatedFloatingActionButton extends HookWidget {
 class CircularButton extends StatelessWidget {
   ///Circular button that accepts an icon
   CircularButton({
-    Key key,
+    Key? key,
     this.color = AppColors.purple,
-    @required this.icon,
-    @required this.onClick,
+    required this.icon,
+    required this.onClick,
   }) : super(key: key);
 
   ///Button color
@@ -122,7 +122,7 @@ class CircularButton extends StatelessWidget {
   final IconData icon;
 
   ///Button on click callback
-  final Function onClick;
+  final void Function()? onClick;
 
   @override
   Widget build(BuildContext context) {

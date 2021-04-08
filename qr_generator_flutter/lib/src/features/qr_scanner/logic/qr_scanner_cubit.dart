@@ -6,7 +6,7 @@ import 'qr_scanner_state.dart';
 ///Cubit State Hanlder
 class QrScannerCubit extends Cubit<QrScannerState> {
   ///Create an instace of `Cubit` with [QrScannerState]
-  QrScannerCubit() : super(const Initial());
+  QrScannerCubit() : super(const QrScannerState.initial());
 
   ///Get seed from api
   Future<void> scanQr() async {
@@ -14,9 +14,9 @@ class QrScannerCubit extends Cubit<QrScannerState> {
       final code = await FlutterBarcodeScanner.scanBarcode(
           '#ff6666', 'Cancel', true, ScanMode.QR);
 
-      emit(Data(code: code));
+      emit(QrScannerState.data(code: code));
     } on PlatformException {
-      emit(const Error());
+      emit(const QrScannerState.error());
     }
   }
 }

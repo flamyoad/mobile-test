@@ -50,5 +50,5 @@ extension QrGeneratorPageStrings on String {
   String version(Object modifier) => localizeVersion(modifier, this, _t);
 
   /// Method for retrieving all the custom modifiers
-  Map<String, String> allVersions() => localizeAllVersions(this, _t);
+  Map<String?, String> allVersions() => localizeAllVersions(this, _t);
 }

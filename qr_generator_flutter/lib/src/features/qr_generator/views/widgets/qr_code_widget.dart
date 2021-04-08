@@ -12,8 +12,8 @@ import 'package:qr_generator_flutter/src/core/styles/app_colors.dart';
 class QrCodeWidget extends StatelessWidget {
   /// QrImage from a `CustomPainter`
   QrCodeWidget({
-    Key key,
-    this.seed,
+    Key? key,
+    required this.seed,
   }) : super(key: key);
 
   /// Seed object from wich the qrcode will be generated
@@ -31,8 +31,8 @@ class QrCodeWidget extends StatelessWidget {
           key: const Key('QrWidget'),
           size: const Size.square(280),
           painter: _QrPainter(
-            image: snapshot.data,
-            seed: seed.seed,
+            image: snapshot.data!,
+            seed: seed.seed!,
           ),
         );
       },
@@ -51,8 +51,8 @@ class QrCodeWidget extends StatelessWidget {
 /// Class that return a `QrPainter` with styles
 class _QrPainter extends QrPainter {
   _QrPainter({
-    @required ui.Image image,
-    @required String seed,
+    required ui.Image image,
+    required String seed,
   }) : super(
           data: seed,
           version: QrVersions.auto,

@@ -8,9 +8,9 @@ import 'package:qr_generator_flutter/src/core/styles/app_text_styles.dart';
 class ExpirationTimer extends StatefulWidget {
   ///Widget that set a timer with a `callback`
   ExpirationTimer({
-    Key key,
-    @required this.seed,
-    @required this.onExpiration,
+    Key? key,
+    required this.seed,
+    required this.onExpiration,
   }) : super(key: key);
 
   ///Expiration of timer
@@ -24,22 +24,22 @@ class ExpirationTimer extends StatefulWidget {
 }
 
 class _ExpirationTimerState extends State<ExpirationTimer> {
-  int _counter;
-  Timer _timer;
+  int? _counter;
+  Timer? _timer;
 
   void _startTimer() {
     if (_timer != null) {
-      _timer.cancel();
+      _timer!.cancel();
     }
     _timer = Timer.periodic(
       const Duration(seconds: 1),
       (timer) {
-        if (mounted) {
+        if (mounted && _counter != null) {
           setState(() {
-            if (_counter > 0) {
-              _counter--;
+            if (_counter! > 0) {
+              _counter = _counter! - 1;
             } else {
-              _timer.cancel();
+              _timer!.cancel();
               widget.onExpiration();
             }
           });
@@ -58,20 +58,24 @@ class _ExpirationTimerState extends State<ExpirationTimer> {
 
   @override
   void didUpdateWidget(covariant ExpirationTimer oldWidget) {
-    _setCounter(widget.seed.expiresAt.difference(DateTime.now()).inSeconds);
+    _setCounter(
+        widget.seed.expiresAt?.difference(DateTime.now()).inSeconds ?? 15);
     super.didUpdateWidget(oldWidget);
   }
 
   @override
   void initState() {
-    _counter = widget.seed.expiresAt.difference(DateTime.now()).inSeconds;
+    _counter =
+        widget.seed.expiresAt?.difference(DateTime.now()).inSeconds ?? 15;
     _startTimer();
     super.initState();
   }
 
   @override
   void dispose() {
-    _timer.cancel();
+    if (_timer != null) {
+      _timer!.cancel();
+    }
     super.dispose();
   }
 

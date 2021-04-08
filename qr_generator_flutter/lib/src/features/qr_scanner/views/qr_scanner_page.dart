@@ -40,7 +40,7 @@ class QrScannerPage extends HookWidget {
 
 class _ScannerBody extends StatelessWidget {
   const _ScannerBody({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -63,9 +63,13 @@ class _DefaultData extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        RaisedButton(
+        ElevatedButton(
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.resolveWith<Color>(
+              (_) => AppColors.pink,
+            ),
+          ),
           key: kQrScanButton,
-          color: AppColors.pink,
           onPressed: () {
             context.read<QrScannerCubit>().scanQr();
           },
@@ -102,7 +106,7 @@ class _ScannedCodeBuilder extends StatelessWidget {
 }
 
 class _ScannedCode extends StatelessWidget {
-  const _ScannedCode({Key key, @required this.code}) : super(key: key);
+  const _ScannedCode({Key? key, required this.code}) : super(key: key);
 
   final String code;
   @override

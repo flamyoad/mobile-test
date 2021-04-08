@@ -17,7 +17,7 @@ import 'widgets/qr_code_widget.dart';
 ///QrGeneratorPage
 class QrGeneratorPage extends StatelessWidget {
   ///QrGeneratorPage constructor
-  const QrGeneratorPage({Key key}) : super(key: key);
+  const QrGeneratorPage({Key? key}) : super(key: key);
 
   ///QrGeneratorPage [routeName]
   static const routeName = 'QrGeneratorPage';
@@ -79,7 +79,7 @@ class _BlocBuilder extends StatelessWidget {
 }
 
 class _Text extends StatelessWidget {
-  const _Text({Key key, @required this.text}) : super(key: key);
+  const _Text({Key? key, required this.text}) : super(key: key);
 
   final String text;
 
@@ -99,7 +99,7 @@ class _Text extends StatelessWidget {
 }
 
 class _QrCode extends StatelessWidget {
-  const _QrCode({Key key, this.seed}) : super(key: key);
+  const _QrCode({Key? key, required this.seed}) : super(key: key);
   final Seed seed;
 
   @override

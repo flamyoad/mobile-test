@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, public_member_api_docs
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'qr_generator_state.dart';
 
@@ -9,80 +9,81 @@ part of 'qr_generator_state.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$QrGeneratorStateTearOff {
   const _$QrGeneratorStateTearOff();
 
-// ignore: unused_element
-  Data data({@required Seed seed}) {
-    return Data(
+  _Data data({required Seed seed}) {
+    return _Data(
       seed: seed,
     );
   }
 
-// ignore: unused_element
-  Initial initial() {
-    return const Initial();
+  _Initial initial() {
+    return const _Initial();
   }
 
-// ignore: unused_element
-  Loading loading() {
-    return const Loading();
+  _Loading loading() {
+    return const _Loading();
   }
 
-// ignore: unused_element
-  Expired expired() {
-    return const Expired();
+  _Expired expired() {
+    return const _Expired();
   }
 
-// ignore: unused_element
-  Error error([String message]) {
-    return Error(
+  _Error error([String? message]) {
+    return _Error(
       message,
     );
   }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $QrGeneratorState = _$QrGeneratorStateTearOff();
 
 /// @nodoc
 mixin _$QrGeneratorState {
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult data(Seed seed),
-    @required TResult initial(),
-    @required TResult loading(),
-    @required TResult expired(),
-    @required TResult error(String message),
-  });
+  TResult when<TResult extends Object?>({
+    required TResult Function(Seed seed) data,
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() expired,
+    required TResult Function(String? message) error,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult data(Seed seed),
-    TResult initial(),
-    TResult loading(),
-    TResult expired(),
-    TResult error(String message),
-    @required TResult orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Seed seed)? data,
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? expired,
+    TResult Function(String? message)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult data(Data value),
-    @required TResult initial(Initial value),
-    @required TResult loading(Loading value),
-    @required TResult expired(Expired value),
-    @required TResult error(Error value),
-  });
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Data value) data,
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Expired value) expired,
+    required TResult Function(_Error value) error,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult data(Data value),
-    TResult initial(Initial value),
-    TResult loading(Loading value),
-    TResult expired(Expired value),
-    TResult error(Error value),
-    @required TResult orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Data value)? data,
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Expired value)? expired,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -103,34 +104,37 @@ class _$QrGeneratorStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class $DataCopyWith<$Res> {
-  factory $DataCopyWith(Data value, $Res Function(Data) then) =
-      _$DataCopyWithImpl<$Res>;
+abstract class _$DataCopyWith<$Res> {
+  factory _$DataCopyWith(_Data value, $Res Function(_Data) then) =
+      __$DataCopyWithImpl<$Res>;
   $Res call({Seed seed});
 }
 
 /// @nodoc
-class _$DataCopyWithImpl<$Res> extends _$QrGeneratorStateCopyWithImpl<$Res>
-    implements $DataCopyWith<$Res> {
-  _$DataCopyWithImpl(Data _value, $Res Function(Data) _then)
-      : super(_value, (v) => _then(v as Data));
+class __$DataCopyWithImpl<$Res> extends _$QrGeneratorStateCopyWithImpl<$Res>
+    implements _$DataCopyWith<$Res> {
+  __$DataCopyWithImpl(_Data _value, $Res Function(_Data) _then)
+      : super(_value, (v) => _then(v as _Data));
 
   @override
-  Data get _value => super._value as Data;
+  _Data get _value => super._value as _Data;
 
   @override
   $Res call({
-    Object seed = freezed,
+    Object? seed = freezed,
   }) {
-    return _then(Data(
-      seed: seed == freezed ? _value.seed : seed as Seed,
+    return _then(_Data(
+      seed: seed == freezed
+          ? _value.seed
+          : seed // ignore: cast_nullable_to_non_nullable
+              as Seed,
     ));
   }
 }
 
 /// @nodoc
-class _$Data implements Data {
-  const _$Data({@required this.seed}) : assert(seed != null);
+class _$_Data implements _Data {
+  const _$_Data({required this.seed});
 
   @override
   final Seed seed;
@@ -143,7 +147,7 @@ class _$Data implements Data {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is Data &&
+        (other is _Data &&
             (identical(other.seed, seed) ||
                 const DeepCollectionEquality().equals(other.seed, seed)));
   }
@@ -154,37 +158,31 @@ class _$Data implements Data {
 
   @JsonKey(ignore: true)
   @override
-  $DataCopyWith<Data> get copyWith =>
-      _$DataCopyWithImpl<Data>(this, _$identity);
+  _$DataCopyWith<_Data> get copyWith =>
+      __$DataCopyWithImpl<_Data>(this, _$identity);
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult data(Seed seed),
-    @required TResult initial(),
-    @required TResult loading(),
-    @required TResult expired(),
-    @required TResult error(String message),
+  TResult when<TResult extends Object?>({
+    required TResult Function(Seed seed) data,
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() expired,
+    required TResult Function(String? message) error,
   }) {
-    assert(data != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(expired != null);
-    assert(error != null);
     return data(seed);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult data(Seed seed),
-    TResult initial(),
-    TResult loading(),
-    TResult expired(),
-    TResult error(String message),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Seed seed)? data,
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? expired,
+    TResult Function(String? message)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (data != null) {
       return data(seed);
     }
@@ -193,32 +191,26 @@ class _$Data implements Data {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult data(Data value),
-    @required TResult initial(Initial value),
-    @required TResult loading(Loading value),
-    @required TResult expired(Expired value),
-    @required TResult error(Error value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Data value) data,
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Expired value) expired,
+    required TResult Function(_Error value) error,
   }) {
-    assert(data != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(expired != null);
-    assert(error != null);
     return data(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult data(Data value),
-    TResult initial(Initial value),
-    TResult loading(Loading value),
-    TResult expired(Expired value),
-    TResult error(Error value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Data value)? data,
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Expired value)? expired,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (data != null) {
       return data(this);
     }
@@ -226,33 +218,33 @@ class _$Data implements Data {
   }
 }
 
-abstract class Data implements QrGeneratorState {
-  const factory Data({@required Seed seed}) = _$Data;
+abstract class _Data implements QrGeneratorState {
+  const factory _Data({required Seed seed}) = _$_Data;
 
-  Seed get seed;
+  Seed get seed => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $DataCopyWith<Data> get copyWith;
+  _$DataCopyWith<_Data> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $InitialCopyWith<$Res> {
-  factory $InitialCopyWith(Initial value, $Res Function(Initial) then) =
-      _$InitialCopyWithImpl<$Res>;
+abstract class _$InitialCopyWith<$Res> {
+  factory _$InitialCopyWith(_Initial value, $Res Function(_Initial) then) =
+      __$InitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$InitialCopyWithImpl<$Res> extends _$QrGeneratorStateCopyWithImpl<$Res>
-    implements $InitialCopyWith<$Res> {
-  _$InitialCopyWithImpl(Initial _value, $Res Function(Initial) _then)
-      : super(_value, (v) => _then(v as Initial));
+class __$InitialCopyWithImpl<$Res> extends _$QrGeneratorStateCopyWithImpl<$Res>
+    implements _$InitialCopyWith<$Res> {
+  __$InitialCopyWithImpl(_Initial _value, $Res Function(_Initial) _then)
+      : super(_value, (v) => _then(v as _Initial));
 
   @override
-  Initial get _value => super._value as Initial;
+  _Initial get _value => super._value as _Initial;
 }
 
 /// @nodoc
-class _$Initial implements Initial {
-  const _$Initial();
+class _$_Initial implements _Initial {
+  const _$_Initial();
 
   @override
   String toString() {
@@ -261,7 +253,7 @@ class _$Initial implements Initial {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is Initial);
+    return identical(this, other) || (other is _Initial);
   }
 
   @override
@@ -269,32 +261,26 @@ class _$Initial implements Initial {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult data(Seed seed),
-    @required TResult initial(),
-    @required TResult loading(),
-    @required TResult expired(),
-    @required TResult error(String message),
+  TResult when<TResult extends Object?>({
+    required TResult Function(Seed seed) data,
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() expired,
+    required TResult Function(String? message) error,
   }) {
-    assert(data != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(expired != null);
-    assert(error != null);
     return initial();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult data(Seed seed),
-    TResult initial(),
-    TResult loading(),
-    TResult expired(),
-    TResult error(String message),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Seed seed)? data,
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? expired,
+    TResult Function(String? message)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial();
     }
@@ -303,32 +289,26 @@ class _$Initial implements Initial {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult data(Data value),
-    @required TResult initial(Initial value),
-    @required TResult loading(Loading value),
-    @required TResult expired(Expired value),
-    @required TResult error(Error value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Data value) data,
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Expired value) expired,
+    required TResult Function(_Error value) error,
   }) {
-    assert(data != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(expired != null);
-    assert(error != null);
     return initial(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult data(Data value),
-    TResult initial(Initial value),
-    TResult loading(Loading value),
-    TResult expired(Expired value),
-    TResult error(Error value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Data value)? data,
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Expired value)? expired,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial(this);
     }
@@ -336,29 +316,29 @@ class _$Initial implements Initial {
   }
 }
 
-abstract class Initial implements QrGeneratorState {
-  const factory Initial() = _$Initial;
+abstract class _Initial implements QrGeneratorState {
+  const factory _Initial() = _$_Initial;
 }
 
 /// @nodoc
-abstract class $LoadingCopyWith<$Res> {
-  factory $LoadingCopyWith(Loading value, $Res Function(Loading) then) =
-      _$LoadingCopyWithImpl<$Res>;
+abstract class _$LoadingCopyWith<$Res> {
+  factory _$LoadingCopyWith(_Loading value, $Res Function(_Loading) then) =
+      __$LoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$LoadingCopyWithImpl<$Res> extends _$QrGeneratorStateCopyWithImpl<$Res>
-    implements $LoadingCopyWith<$Res> {
-  _$LoadingCopyWithImpl(Loading _value, $Res Function(Loading) _then)
-      : super(_value, (v) => _then(v as Loading));
+class __$LoadingCopyWithImpl<$Res> extends _$QrGeneratorStateCopyWithImpl<$Res>
+    implements _$LoadingCopyWith<$Res> {
+  __$LoadingCopyWithImpl(_Loading _value, $Res Function(_Loading) _then)
+      : super(_value, (v) => _then(v as _Loading));
 
   @override
-  Loading get _value => super._value as Loading;
+  _Loading get _value => super._value as _Loading;
 }
 
 /// @nodoc
-class _$Loading implements Loading {
-  const _$Loading();
+class _$_Loading implements _Loading {
+  const _$_Loading();
 
   @override
   String toString() {
@@ -367,7 +347,7 @@ class _$Loading implements Loading {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is Loading);
+    return identical(this, other) || (other is _Loading);
   }
 
   @override
@@ -375,32 +355,26 @@ class _$Loading implements Loading {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult data(Seed seed),
-    @required TResult initial(),
-    @required TResult loading(),
-    @required TResult expired(),
-    @required TResult error(String message),
+  TResult when<TResult extends Object?>({
+    required TResult Function(Seed seed) data,
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() expired,
+    required TResult Function(String? message) error,
   }) {
-    assert(data != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(expired != null);
-    assert(error != null);
     return loading();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult data(Seed seed),
-    TResult initial(),
-    TResult loading(),
-    TResult expired(),
-    TResult error(String message),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Seed seed)? data,
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? expired,
+    TResult Function(String? message)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading();
     }
@@ -409,32 +383,26 @@ class _$Loading implements Loading {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult data(Data value),
-    @required TResult initial(Initial value),
-    @required TResult loading(Loading value),
-    @required TResult expired(Expired value),
-    @required TResult error(Error value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Data value) data,
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Expired value) expired,
+    required TResult Function(_Error value) error,
   }) {
-    assert(data != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(expired != null);
-    assert(error != null);
     return loading(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult data(Data value),
-    TResult initial(Initial value),
-    TResult loading(Loading value),
-    TResult expired(Expired value),
-    TResult error(Error value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Data value)? data,
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Expired value)? expired,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading(this);
     }
@@ -442,29 +410,29 @@ class _$Loading implements Loading {
   }
 }
 
-abstract class Loading implements QrGeneratorState {
-  const factory Loading() = _$Loading;
+abstract class _Loading implements QrGeneratorState {
+  const factory _Loading() = _$_Loading;
 }
 
 /// @nodoc
-abstract class $ExpiredCopyWith<$Res> {
-  factory $ExpiredCopyWith(Expired value, $Res Function(Expired) then) =
-      _$ExpiredCopyWithImpl<$Res>;
+abstract class _$ExpiredCopyWith<$Res> {
+  factory _$ExpiredCopyWith(_Expired value, $Res Function(_Expired) then) =
+      __$ExpiredCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$ExpiredCopyWithImpl<$Res> extends _$QrGeneratorStateCopyWithImpl<$Res>
-    implements $ExpiredCopyWith<$Res> {
-  _$ExpiredCopyWithImpl(Expired _value, $Res Function(Expired) _then)
-      : super(_value, (v) => _then(v as Expired));
+class __$ExpiredCopyWithImpl<$Res> extends _$QrGeneratorStateCopyWithImpl<$Res>
+    implements _$ExpiredCopyWith<$Res> {
+  __$ExpiredCopyWithImpl(_Expired _value, $Res Function(_Expired) _then)
+      : super(_value, (v) => _then(v as _Expired));
 
   @override
-  Expired get _value => super._value as Expired;
+  _Expired get _value => super._value as _Expired;
 }
 
 /// @nodoc
-class _$Expired implements Expired {
-  const _$Expired();
+class _$_Expired implements _Expired {
+  const _$_Expired();
 
   @override
   String toString() {
@@ -473,7 +441,7 @@ class _$Expired implements Expired {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is Expired);
+    return identical(this, other) || (other is _Expired);
   }
 
   @override
@@ -481,32 +449,26 @@ class _$Expired implements Expired {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult data(Seed seed),
-    @required TResult initial(),
-    @required TResult loading(),
-    @required TResult expired(),
-    @required TResult error(String message),
+  TResult when<TResult extends Object?>({
+    required TResult Function(Seed seed) data,
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() expired,
+    required TResult Function(String? message) error,
   }) {
-    assert(data != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(expired != null);
-    assert(error != null);
     return expired();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult data(Seed seed),
-    TResult initial(),
-    TResult loading(),
-    TResult expired(),
-    TResult error(String message),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Seed seed)? data,
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? expired,
+    TResult Function(String? message)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (expired != null) {
       return expired();
     }
@@ -515,32 +477,26 @@ class _$Expired implements Expired {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult data(Data value),
-    @required TResult initial(Initial value),
-    @required TResult loading(Loading value),
-    @required TResult expired(Expired value),
-    @required TResult error(Error value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Data value) data,
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Expired value) expired,
+    required TResult Function(_Error value) error,
   }) {
-    assert(data != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(expired != null);
-    assert(error != null);
     return expired(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult data(Data value),
-    TResult initial(Initial value),
-    TResult loading(Loading value),
-    TResult expired(Expired value),
-    TResult error(Error value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Data value)? data,
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Expired value)? expired,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (expired != null) {
       return expired(this);
     }
@@ -548,42 +504,45 @@ class _$Expired implements Expired {
   }
 }
 
-abstract class Expired implements QrGeneratorState {
-  const factory Expired() = _$Expired;
+abstract class _Expired implements QrGeneratorState {
+  const factory _Expired() = _$_Expired;
 }
 
 /// @nodoc
-abstract class $ErrorCopyWith<$Res> {
-  factory $ErrorCopyWith(Error value, $Res Function(Error) then) =
-      _$ErrorCopyWithImpl<$Res>;
-  $Res call({String message});
+abstract class _$ErrorCopyWith<$Res> {
+  factory _$ErrorCopyWith(_Error value, $Res Function(_Error) then) =
+      __$ErrorCopyWithImpl<$Res>;
+  $Res call({String? message});
 }
 
 /// @nodoc
-class _$ErrorCopyWithImpl<$Res> extends _$QrGeneratorStateCopyWithImpl<$Res>
-    implements $ErrorCopyWith<$Res> {
-  _$ErrorCopyWithImpl(Error _value, $Res Function(Error) _then)
-      : super(_value, (v) => _then(v as Error));
+class __$ErrorCopyWithImpl<$Res> extends _$QrGeneratorStateCopyWithImpl<$Res>
+    implements _$ErrorCopyWith<$Res> {
+  __$ErrorCopyWithImpl(_Error _value, $Res Function(_Error) _then)
+      : super(_value, (v) => _then(v as _Error));
 
   @override
-  Error get _value => super._value as Error;
+  _Error get _value => super._value as _Error;
 
   @override
   $Res call({
-    Object message = freezed,
+    Object? message = freezed,
   }) {
-    return _then(Error(
-      message == freezed ? _value.message : message as String,
+    return _then(_Error(
+      message == freezed
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
 
 /// @nodoc
-class _$Error implements Error {
-  const _$Error([this.message]);
+class _$_Error implements _Error {
+  const _$_Error([this.message]);
 
   @override
-  final String message;
+  final String? message;
 
   @override
   String toString() {
@@ -593,7 +552,7 @@ class _$Error implements Error {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is Error &&
+        (other is _Error &&
             (identical(other.message, message) ||
                 const DeepCollectionEquality().equals(other.message, message)));
   }
@@ -604,37 +563,31 @@ class _$Error implements Error {
 
   @JsonKey(ignore: true)
   @override
-  $ErrorCopyWith<Error> get copyWith =>
-      _$ErrorCopyWithImpl<Error>(this, _$identity);
+  _$ErrorCopyWith<_Error> get copyWith =>
+      __$ErrorCopyWithImpl<_Error>(this, _$identity);
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult data(Seed seed),
-    @required TResult initial(),
-    @required TResult loading(),
-    @required TResult expired(),
-    @required TResult error(String message),
+  TResult when<TResult extends Object?>({
+    required TResult Function(Seed seed) data,
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() expired,
+    required TResult Function(String? message) error,
   }) {
-    assert(data != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(expired != null);
-    assert(error != null);
     return error(message);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult data(Seed seed),
-    TResult initial(),
-    TResult loading(),
-    TResult expired(),
-    TResult error(String message),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Seed seed)? data,
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? expired,
+    TResult Function(String? message)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error(message);
     }
@@ -643,32 +596,26 @@ class _$Error implements Error {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult data(Data value),
-    @required TResult initial(Initial value),
-    @required TResult loading(Loading value),
-    @required TResult expired(Expired value),
-    @required TResult error(Error value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Data value) data,
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Expired value) expired,
+    required TResult Function(_Error value) error,
   }) {
-    assert(data != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(expired != null);
-    assert(error != null);
     return error(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult data(Data value),
-    TResult initial(Initial value),
-    TResult loading(Loading value),
-    TResult expired(Expired value),
-    TResult error(Error value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Data value)? data,
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Expired value)? expired,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error(this);
     }
@@ -676,10 +623,10 @@ class _$Error implements Error {
   }
 }
 
-abstract class Error implements QrGeneratorState {
-  const factory Error([String message]) = _$Error;
+abstract class _Error implements QrGeneratorState {
+  const factory _Error([String? message]) = _$_Error;
 
-  String get message;
+  String? get message => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ErrorCopyWith<Error> get copyWith;
+  _$ErrorCopyWith<_Error> get copyWith => throw _privateConstructorUsedError;
 }
