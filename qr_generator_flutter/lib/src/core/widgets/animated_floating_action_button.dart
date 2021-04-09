@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:qr_generator_flutter/src/core/styles/app_colors.dart';
 
+///Keys for testing
+final kPrimaryFloatingActionButtonKey = UniqueKey();
+
 ///CircularActionButton with animation for various buttons
 class AnimatedFloatingActionButton extends HookWidget {
   ///Circular button that recieve list of `butttons` to animate
@@ -88,7 +91,7 @@ class AnimatedFloatingActionButton extends HookWidget {
               Matrix4.rotationZ(_getRadiansFromDegree(_rotationAnimation)),
           alignment: Alignment.center,
           child: CircularButton(
-            key: const Key('kPrimaryFloatingButton'),
+            key: kPrimaryFloatingActionButtonKey,
             color: AppColors.pink,
             icon: Icons.menu,
             onClick: () {

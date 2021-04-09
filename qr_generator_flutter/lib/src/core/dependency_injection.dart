@@ -29,8 +29,8 @@ Future<void> setUpDI() async {
   );
 
   //* Inject UseCases
-  getIt.registerLazySingleton<GetSeed>(
-    () => GetSeed(
+  getIt.registerLazySingleton<QrScanner>(
+    () => QrScanner(
       repository: getIt<IQrGeneratorRepository>(),
     ),
   );
@@ -38,7 +38,7 @@ Future<void> setUpDI() async {
   //* Inject Logic Generator Code Holder / Cubit
   getIt.registerLazySingleton<QrGeneratorCubit>(
     () => QrGeneratorCubit(
-      getSeed: getIt<GetSeed>(),
+      getSeed: getIt<QrScanner>(),
     ),
   );
 

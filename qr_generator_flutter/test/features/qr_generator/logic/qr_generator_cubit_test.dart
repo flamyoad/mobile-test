@@ -8,7 +8,7 @@ import 'package:qr_generator/qr_generator.dart';
 import 'package:qr_generator_flutter/src/features/qr_generator/logic/qr_generator_cubit.dart';
 import 'package:qr_generator_flutter/src/features/qr_generator/logic/qr_generator_state.dart';
 
-class MockGetSeed extends Mock implements GetSeed {}
+class MockGetSeed extends Mock implements QrScanner {}
 
 void main() {
   group('QrGeneratorCubit', () {
@@ -70,6 +70,19 @@ void main() {
         verify: (_) {
           verify(() => mockGetSeed()).called(1);
         },
+      );
+    });
+
+    group('expireCode', () {
+      blocTest<QrGeneratorCubit, QrGeneratorState>(
+        'should emit expired',
+        build: () {
+          return QrGeneratorCubit(getSeed: mockGetSeed);
+        },
+        act: (cubit) => cubit.expireCode(),
+        expect: () => <QrGeneratorState>[
+          const QrGeneratorState.expired(),
+        ],
       );
     });
   });

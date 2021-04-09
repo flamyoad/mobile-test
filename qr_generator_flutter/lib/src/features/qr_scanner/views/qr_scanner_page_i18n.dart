@@ -1,3 +1,4 @@
+// coverage:ignore-file
 // ignore_for_file: public_member_api_docs
 import 'package:i18n_extension/i18n_extension.dart';
 

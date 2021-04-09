@@ -4,9 +4,9 @@ import 'package:errors/errors.dart';
 import '../domain.dart';
 
 /// Get Seed Use Case
-class GetSeed {
+class QrScanner {
   ///Get seed Use Case
-  GetSeed({required this.repository});
+  QrScanner({required this.repository});
 
   /// Repository instance
   final IQrGeneratorRepository repository;

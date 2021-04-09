@@ -12,10 +12,10 @@ class MockQrGeneratorRepository extends Mock implements IQrGeneratorRepository {
 void main() {
   final mockQrGeneratorRepository = MockQrGeneratorRepository();
 
-  late GetSeed usecase;
+  late QrScanner usecase;
 
   setUp(() {
-    usecase = GetSeed(repository: mockQrGeneratorRepository);
+    usecase = QrScanner(repository: mockQrGeneratorRepository);
   });
 
   const tSeed = 'seed';

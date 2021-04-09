@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -5,6 +7,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
 import 'package:qr_generator/qr_generator.dart';
+import 'package:qr_generator_flutter/src/core/widgets/animated_floating_action_button.dart';
 import 'package:qr_generator_flutter/src/features/qr_generator/logic/qr_generator_cubit.dart';
 import 'package:qr_generator_flutter/src/features/qr_generator/logic/qr_generator_state.dart';
 import 'package:qr_generator_flutter/src/features/qr_generator/views/qr_generator_page.dart';
@@ -14,8 +17,6 @@ import 'package:qr_generator_flutter/src/features/qr_scanner/logic/qr_scanner_st
     as scanner_s;
 import 'package:qr_generator_flutter/src/features/qr_scanner/views/qr_scanner_page.dart';
 import 'package:qr_generator_flutter/src/features/qr_generator/views/widgets/qr_code_widget.dart';
-
-class MockGetSeed extends Mock implements GetSeed {}
 
 class MockQrGeneratorCubit extends MockCubit<QrGeneratorState>
     implements QrGeneratorCubit {}
@@ -62,7 +63,7 @@ void main() {
       ));
 
       ///expect
-      expect(find.byKey(const Key('kBodyKey')), findsOneWidget);
+      expect(find.byKey(kBodyKey), findsOneWidget);
     });
 
     testWidgets('renders Initial Text for Initial', (tester) async {
@@ -140,6 +141,33 @@ void main() {
       expect(find.text(kCodeExpired.i18n), findsOneWidget);
     });
 
+    testWidgets('call GetSeedMethod when Generate Qr button is pressed',
+        (tester) async {
+      ///Arrange
+      when(() => qrGeneratorCubit.state)
+          .thenReturn(const QrGeneratorState.initial());
+      when(() => qrScannerCubit.state)
+          .thenReturn(const scanner_s.QrScannerState.initial());
+
+      when(() => qrGeneratorCubit.getSeed()).thenAnswer((_) async => Void);
+
+      ///Act
+      await tester.pumpWidget(MultiBlocProvider(
+        providers: [
+          BlocProvider.value(value: qrGeneratorCubit),
+          BlocProvider.value(value: qrScannerCubit),
+        ],
+        child: const MaterialApp(home: QrGeneratorPage()),
+      ));
+      await tester.tap(find.byKey(kPrimaryFloatingActionButtonKey));
+      await tester.pumpAndSettle();
+      await tester.tap(find.byKey(kGenerateQrButtonKey));
+      await tester.pumpAndSettle();
+
+      ///Expect
+      verify(() => qrGeneratorCubit.getSeed()).called(1);
+    });
+
     testWidgets('navigates to QrScanPage when scan icon is tapped',
         (tester) async {
       ///Arrange
@@ -156,21 +184,46 @@ void main() {
         ],
         child: const MaterialApp(home: QrGeneratorPage()),
       ));
-      await tester.tap(find.byKey(const Key('kPrimaryFloatingButton')));
+      await tester.tap(find.byKey(kPrimaryFloatingActionButtonKey));
       await tester.pumpAndSettle();
-      await tester.tap(find.byKey(const Key('kScanQrButton')));
+      await tester.tap(find.byKey(kScannerPageButtonKey));
       await tester.pumpAndSettle();
 
       ///Expect
       expect(find.byType(QrScannerPage), findsOneWidget);
     });
 
-    testWidgets('triggers getSeed when generate qr button is pressed',
+    testWidgets('navigates to QrScanPage when scan icon is tapped',
         (tester) async {
       ///Arrange
       when(() => qrGeneratorCubit.state)
           .thenReturn(const QrGeneratorState.initial());
-      when(() => qrGeneratorCubit.getSeed()).thenAnswer((_) async {});
+      when(() => qrScannerCubit.state)
+          .thenReturn(const scanner_s.QrScannerState.initial());
+
+      ///Act
+      await tester.pumpWidget(MultiBlocProvider(
+        providers: [
+          BlocProvider.value(value: qrGeneratorCubit),
+          BlocProvider.value(value: qrScannerCubit),
+        ],
+        child: const MaterialApp(home: QrGeneratorPage()),
+      ));
+      await tester.tap(find.byKey(kPrimaryFloatingActionButtonKey));
+      await tester.pumpAndSettle();
+      await tester.tap(find.byKey(kScannerPageButtonKey));
+      await tester.pumpAndSettle();
+
+      ///Expect
+      expect(find.byType(QrScannerPage), findsOneWidget);
+    });
+
+    testWidgets(
+        'forward and reverse the animation when floating action button is pressed',
+        (tester) async {
+      ///Arrange
+      when(() => qrGeneratorCubit.state)
+          .thenReturn(const QrGeneratorState.initial());
 
       ///Act
       await tester.pumpWidget(BlocProvider.value(
@@ -178,12 +231,10 @@ void main() {
         child: const MaterialApp(home: QrGeneratorPage()),
       ));
 
-      await tester.tap(find.byKey(const Key('kPrimaryFloatingButton')));
+      await tester.tap(find.byKey(kPrimaryFloatingActionButtonKey));
       await tester.pumpAndSettle();
-      await tester.tap(find.byKey(const Key('kGenerateQrButton')));
-      await tester.pumpAndSettle();
-
-      verify(() => qrGeneratorCubit.getSeed()).called(1);
+      expect(find.byKey(kScannerPageButtonKey), findsOneWidget);
+      await tester.tap(find.byKey(kPrimaryFloatingActionButtonKey));
     });
   });
 }

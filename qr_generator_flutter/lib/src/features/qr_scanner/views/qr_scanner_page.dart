@@ -10,10 +10,11 @@ import 'package:qr_generator_flutter/src/features/qr_scanner/logic/qr_scanner_st
 import 'package:qr_generator_flutter/src/features/qr_scanner/views/qr_scanner_page_i18n.dart';
 
 ///Key for testing
-final kScannerBody = UniqueKey();
+final kScannerBodyKey = UniqueKey();
 
 ///Key for testing
-final kQrScanButton = UniqueKey();
+final kQrScanButtonKey = UniqueKey();
+final kCodeTextKey = UniqueKey();
 
 ///QrScannerPage
 class QrScannerPage extends HookWidget {
@@ -31,7 +32,7 @@ class QrScannerPage extends HookWidget {
       appBar: AppBar(title: Text(kQrScan.i18n)),
       body: Center(
         child: _ScannerBody(
-          key: kScannerBody,
+          key: kScannerBodyKey,
         ),
       ),
     );
@@ -69,7 +70,7 @@ class _DefaultData extends StatelessWidget {
               (_) => AppColors.pink,
             ),
           ),
-          key: kQrScanButton,
+          key: kQrScanButtonKey,
           onPressed: () {
             context.read<QrScannerCubit>().scanQr();
           },
@@ -120,6 +121,7 @@ class _ScannedCode extends StatelessWidget {
       },
       child: Text(
         '$code',
+        key: kCodeTextKey,
         style: AppTextStyle.code,
         textAlign: TextAlign.center,
       ),

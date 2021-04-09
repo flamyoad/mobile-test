@@ -14,6 +14,15 @@ import '../logic/qr_generator_state.dart';
 import 'qr_generator_page_i18n.dart';
 import 'widgets/qr_code_widget.dart';
 
+///Keys For Testing
+final kScannerPageButtonKey = UniqueKey();
+
+///Keys For Testing
+final kGenerateQrButtonKey = UniqueKey();
+
+///Key for Testing
+final kBodyKey = UniqueKey();
+
 ///QrGeneratorPage
 class QrGeneratorPage extends StatelessWidget {
   ///QrGeneratorPage constructor
@@ -39,14 +48,14 @@ class QrGeneratorPage extends StatelessWidget {
       floatingActionButton: AnimatedFloatingActionButton(
         buttons: [
           CircularButton(
-            key: const Key('kGenerateQrButton'),
+            key: kGenerateQrButtonKey,
             icon: Icons.qr_code,
             onClick: () {
               context.read<QrGeneratorCubit>().getSeed();
             },
           ),
           CircularButton(
-            key: const Key('kScanQrButton'),
+            key: kScannerPageButtonKey,
             icon: Icons.qr_code_scanner_outlined,
             onClick: () {
               Navigator.push(context, QrScannerPage.route());
@@ -62,7 +71,7 @@ class _BlocBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<QrGeneratorCubit, QrGeneratorState>(
-      key: const Key('kBodyKey'),
+      key: kBodyKey,
       builder: (context, state) {
         return state.when(
           initial: () => _Text(text: kWelcomeText.i18n),

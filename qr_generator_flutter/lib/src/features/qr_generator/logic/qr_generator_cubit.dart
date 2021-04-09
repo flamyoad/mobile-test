@@ -6,11 +6,11 @@ import 'qr_generator_state.dart';
 class QrGeneratorCubit extends Cubit<QrGeneratorState> {
   ///Create an instace of `Cubit` with [QrGeneratorState]
   QrGeneratorCubit({
-    required GetSeed getSeed,
+    required QrScanner getSeed,
   })   : _getSeed = getSeed,
         super(const QrGeneratorState.initial());
 
-  final GetSeed _getSeed;
+  final QrScanner _getSeed;
 
   ///Get seed from api
   Future<void> getSeed() async {
