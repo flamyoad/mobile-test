@@ -1,3 +1,6 @@
+Implementation is similar to what i use (Cubit/GetIt) !! But the state is implemented with Freeezed package ^_^. So can refer to this project.
+
+
 # Superformula Mobile Developer Coding Test
 
 Make sure you read **all** of this document carefully, and follow the guidelines in it.
